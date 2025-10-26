@@ -1,23 +1,107 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>página de Testes</title>
+    <title>Meus Gostos - Thales Dev</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1>Minha página de Testes</h1>
+    <header class="page-header">
+        <div class="header-inner">
+            <div class="marca">
+                <div class="avatar-substituto" aria-hidden="true">TD</div>
+                <div class="marca-titulo">
+                    <span class="nome">Meus Gostos</span>
+                    <span class="subtitulo">Filmes, jogos e música</span>
+                </div>
+            </div>
 
-   
- <a href="../index.html">Voltar para a página Home 🏠</a>
+            <nav class="links-navegacao" aria-label="Navegação da página">
+                <a href="../index.html">Home</a>
+                <a href="contato.html">Contato</a>
+            </nav>
 
- <img src="https://github.com/Thales971.png" alt="jovem tirando selfie em hotel com uma cara séria"/>
- <img src="../assets/images/image2.png" alt=""/>
+            <div class="acoes">
+                <p id="titulo" class="titulo-tema" aria-live="polite">Tema Claro ☀️</p>
+                <button id="botao" class="alternar-tema" aria-label="Alternar tema claro e escuro">🌙</button>
+            </div>
+        </div>
+    </header>
 
- <h3>Melhores times do Brasil</h3>
- <ol>
-    <li>Bragantino</li>
- </ol>
+            <main id="main-content">
+        <section class="hobbies card">
+            <h2>Hobbies Principais</h2>
+            <div class="lista-hobbies">
+                <article class="card-hobby">
+                    <div class="icone-hobby">🥧</div>
+                    <h3>Perfumaria</h3>
+                    <p>Exploro fragrâncias, notas e coleções.</p>
+                </article>
+
+                <article class="card-hobby">
+                    <div class="icone-hobby">🏋️‍♂️</div>
+                    <h3>Treinar</h3>
+                    <p>Academia e esportes para manter a forma.</p>
+                </article>
+
+                <article class="card-hobby">
+                    <div class="icone-hobby">🎮</div>
+                    <h3>Jogar</h3>
+                    <p>Games que misturam narrativa e ação.</p>
+                </article>
+
+                <article class="card-hobby">
+                    <div class="icone-hobby">💻</div>
+                    <h3>Programar</h3>
+                    <p>Construir projetos, estudar novas tecnologias.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="top-lists card">
+            <h2>Top 5</h2>
+            <div class="grade-listas">
+                <div class="lista-top">
+                    <h3>Top 5 Jogos</h3>
+                    <ol>
+                        <li><img class="miniatura-lista" src="../img/undertale.jpg" alt="Undertale" width="56" height="56"> Undertale</li>
+                        <li><img class="miniatura-lista" src="../img/life-is-strange.webp" alt="Life is Strange" width="56" height="56"> Life is Strange</li>
+                        <li><img class="miniatura-lista" src="../img/rayman-legends.webp" alt="Rayman Legends" width="56" height="56"> Rayman Legends</li>
+                        <li><img class="miniatura-lista" src="../img/pvz-gw2.webp" alt="PvZ GW2" width="56" height="56"> PvZ GW2 (Plants vs. Zombies: Garden Warfare 2)</li>
+                        <li><img class="miniatura-lista" src="../img/warzone.webp" alt="Call of Duty: Warzone" width="56" height="56"> Call of Duty: Warzone</li>
+                    </ol>
+                </div>
+
+                <div class="lista-top">
+                    <h3>Top 5 Filmes/Séries</h3>
+                    <ol>
+                        <li><img class="miniatura-lista" src="../img/wakfu.webp" alt="Wakfu" width="56" height="56"> Wakfu</li>
+                        <li><img class="miniatura-lista" src="../img/flash.webp" alt="Flash" width="56" height="56"> Flash (série)</li>
+                        <li><img class="miniatura-lista" src="../img/panico.webp" alt="Pânico" width="56" height="56"> Trilogia Pânico (Scream)</li>
+                        <li><img class="miniatura-lista" src="../img/clube-da-luta.webp" alt="Clube da Luta" width="56" height="56"> Clube da Luta (Fight Club)</li>
+                        <li><img class="miniatura-lista" src="../img/the-boys.webp" alt="The Boys" width="56" height="56"> The Boys</li>
+                    </ol>
+                </div>
+
+                <div class="lista-top">
+                    <h3>Top 5 Músicas</h3>
+                    <ol>
+                        <li><img class="miniatura-lista" src="../img/i-wait-for-you.jpg" alt="I Wait for You" width="56" height="56"> Alex G - I Wait for You</li>
+                        <li><img class="miniatura-lista" src="../img/despise.webp" alt="Despise" width="56" height="56"> Slipknot - Despise</li>
+                        <li><img class="miniatura-lista" src="../img/let-down.webp" alt="Let Down" width="56" height="56"> Radiohead - Let Down</li>
+                        <li><img class="miniatura-lista" src="../img/no-surprises.webp" alt="No Surprises" width="56" height="56"> Radiohead - No Surprises</li>
+                        <li><img class="miniatura-lista" src="../img/mad-hatter.webp" alt="Mad Hatter" width="56" height="56"> Melanie Martinez - Mad Hatter</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer>
+            <p>© 2025 Thales Dev</p>
+        </footer>
+
+    <script src="../js/scripts.js"></script>
 </body>
 </html>

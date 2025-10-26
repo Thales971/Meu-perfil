@@ -2,45 +2,75 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primeiro site</title>
-    <link rel="stylesheet" href="./css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Portfólio e página pessoal de Thales — desenvolvedor em formação. Contato, hobbies e projetos.">
+        <title>Thales Dev — Apresentação Pessoal</title>
+        <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <header>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="marca">
+                <div class="avatar-substituto" aria-hidden="true">TD</div>
+                <div class="marca-titulo">
+                    <span class="nome">Thales Dev</span>
+                    <span class="subtitulo">Estudante - Desenvolvimento de Sistemas</span>
+                </div>
+            </div>
 
-        <h1>Thales Dev</h1>
-        <p> Estudante do curso técnico em Desenvolvimento de sistemas!</p>
+            <nav class="links-navegacao" aria-label="Navegação principal">
+                <a href="pages/meusGostos.html">Meus Gostos</a>
+                <a href="pages/contato.html">Contato</a>
+            </nav>
+
+            <div class="acoes">
+                <p id="titulo" class="titulo-tema" aria-live="polite">Tema Claro ☀️</p>
+                <button id="botao" class="alternar-tema" aria-label="Alternar tema claro e escuro">🌙</button>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section id="sobre-mim"> 
-<h3 id="titulo-sobre-mim">Sobre mim: </h3>
-<p class="texto-sobre-mim">Vai Bragantino!</p>
-<P class="texto-sobre-mim">Ds é o melhor curso do senai</P>
+        <main id="main-content">
+        <section id="sobre-mim" class="card">
+            <h2>Sobre mim</h2>
+            <p class="lead">Vai Bragantino! Sou aluno do curso técnico em Desenvolvimento de Sistemas e estou aprendendo HTML, CSS e JavaScript.</p>
+            <p>Gosto de treinar, programar e aprender sobre UX e acessibilidade.</p>
         </section>
 
-        <section id="meus-hobbies"> 
-<h3 id="titulo-meus-hobbies">Meus hobbies </h3>
-<ul>
-    <li>Treinar🏋️‍♂️</li>
-    <li>programar👨‍💻</li>
-    <li>Perfumes</li>
-    <li>Armwrestling</li>
-</ul>
-
+        <section id="habilidades" class="card">
+            <h2>Habilidades</h2>
+            <ul class="habilidades">
+                <li>HTML &amp; CSS</li>
+                <li>JavaScript (DOM)</li>
+                <li>Git &amp; GitHub</li>
+                <li>Comunicação</li>
+            </ul>
         </section>
 
-        <section id="contato">
-<h3>Entre em contato</h3>
-<p>Quer conversar sobre tecnologia? me encontre no 
-      <a href="https://github.com/Thales971" target="_blank">Github</a> 
-    </p>
+        <section id="contato" class="card">
+            <h2>Contato</h2>
+            <p>Quer conversar sobre tecnologia? Me encontre no <a href="https://github.com/Thales971" target="_blank" rel="noopener noreferrer">GitHub</a> ou envie um e-mail: <a href="mailto:thales.t.silva6@aluno.senai.br">thales.t.silva6@aluno.senai.br</a>.</p>
+            <p><a href="pages/contato.html">Página de Contato Completa</a></p>
+            <p><a href="pages/meusGostos.html">Meus Gostos</a></p>
         </section>
     </main>
-    <footer>
-        <p>2025 Thales dev - Minha primeira págiana web! ahahah #+1000 de aura</p>
-   <a href="pages/meusGostos.html">Voltar para a página web</a>
-    </footer>
-    </body>
+
+        <footer>
+            <div class="rodape-interno">
+                <div class="rodape-esquerda">
+                        <div class="avatar-substituto avatar-compacto" aria-hidden="true">TD</div>
+                            <div>
+                                <strong>Thales Dev</strong>
+                                <div class="rodape-nota">Página de apresentação</div>
+                            </div>
+                    </div>
+                    <div class="rodape-direita">
+                    <div>© 2025 Thales Dev</div>
+                    <div><a href="pages/meusGostos.html">Meus Gostos</a> · <a href="pages/contato.html">Contato</a></div>
+                </div>
+            </div>
+        </footer>
+
+    <script src="./js/scripts.js"></script>
+</body>
 </html>
