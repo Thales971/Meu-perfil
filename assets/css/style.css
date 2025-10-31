@@ -10,7 +10,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -53,18 +54,29 @@ body.escuro {
    TIPOGRAFIA
    ============================================================================= */
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.125rem; }
+h1 {
+    font-size: 2rem;
+}
 
-p, li {
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.125rem;
+}
+
+p,
+li {
     margin-bottom: 0.5rem;
 }
 
@@ -78,14 +90,17 @@ p, li {
    ============================================================================= */
 
 /* Estilo para a header */
-.site-header, .page-header {
-    background: linear-gradient(90deg, #6c63ff, #4a47a3); /* Gradiente de fundo */
+.site-header,
+.page-header {
+    background: linear-gradient(90deg, #6c63ff, #4a47a3);
+    /* Gradiente de fundo */
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: white; /* Garante que o texto seja branco */
+    color: white;
+    /* Garante que o texto seja branco */
 }
 
 .header-inner {
@@ -94,7 +109,8 @@ p, li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap; /* Permite quebra em telas menores */
+    flex-wrap: wrap;
+    /* Permite quebra em telas menores */
     gap: 1rem;
 }
 
@@ -112,7 +128,8 @@ p, li {
     align-items: center;
     gap: 0.75rem;
     flex: 1;
-    min-width: 0; /* evita overflow em telas pequenas */
+    min-width: 0;
+    /* evita overflow em telas pequenas */
 }
 
 .marca .avatar-substituto {
@@ -149,7 +166,8 @@ p, li {
 .links-navegacao {
     display: flex;
     gap: 1.5rem;
-    margin-left: 0; /* agora a marca ocupa o espaço, não precisamos de auto */
+    margin-left: 0;
+    /* agora a marca ocupa o espaço, não precisamos de auto */
 }
 
 .links-navegacao a {
@@ -170,7 +188,8 @@ p, li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-left: 0; /* manter os itens juntos sem espaço extra */
+    margin-left: 0;
+    /* manter os itens juntos sem espaço extra */
 }
 
 .titulo-tema {
@@ -235,10 +254,11 @@ p, li {
 
 .rodape-nota {
     font-size: 0.9rem;
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
+
 body.escuro .rodape-nota {
-    color: rgba(255,255,255,0.72);
+    color: rgba(255, 255, 255, 0.72);
 }
 
 .rodape-links {
@@ -268,6 +288,7 @@ main {
     box-shadow: 0 6px 18px var(--shadow);
     transition: transform 180ms ease, box-shadow 180ms ease, opacity 200ms ease;
 }
+
 .card:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 30px var(--shadow);
@@ -284,7 +305,7 @@ footer {
     color: var(--text-color);
     border-top: 1px solid var(--border-color);
     margin-top: auto;
-    box-shadow: 0 -1px 6px rgba(0,0,0,0.04);
+    box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.04);
 }
 
 .rodape-interno {
@@ -296,11 +317,13 @@ footer {
     gap: 1rem;
     padding: 0 0.5rem;
 }
+
 .rodape-esquerda {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
+
 .rodape-direita {
     text-align: right;
     color: var(--text-color);
@@ -315,14 +338,16 @@ footer {
     max-width: 1000px;
     margin: 1.25rem auto 0;
     padding: 1rem;
-    background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01));
     border-radius: 10px;
 }
+
 .rodape-contato .left {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
+
 .rodape-contato .right {
     text-align: right;
     color: var(--text-color);
@@ -339,6 +364,7 @@ footer {
     flex-wrap: wrap;
     gap: 0.5rem;
 }
+
 .habilidades li {
     background-color: var(--hover-bg);
     padding: 0.5rem 1rem;
@@ -351,6 +377,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 }
+
 .card-hobby {
     background-color: var(--hover-bg);
     padding: 1rem;
@@ -358,9 +385,11 @@ footer {
     text-align: center;
     transition: transform 0.3s ease;
 }
+
 .card-hobby:hover {
     transform: scale(1.05);
 }
+
 .icone-hobby {
     font-size: 2rem;
     margin-bottom: 0.5rem;
@@ -374,6 +403,7 @@ footer {
     margin-right: 0.75rem;
     vertical-align: middle;
 }
+
 .lista-top ol li {
     display: flex;
     align-items: center;
@@ -386,14 +416,17 @@ footer {
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
+
 .lista-top {
     background-color: var(--hover-bg);
     padding: 1rem;
     border-radius: 8px;
 }
+
 .lista-top ol {
     padding-left: 1.5rem;
 }
+
 .lista-top li {
     margin-bottom: 0.5rem;
 }
@@ -404,6 +437,7 @@ footer {
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
+
 .link-contato {
     display: flex;
     align-items: center;
@@ -414,9 +448,11 @@ footer {
     border-radius: 8px;
     transition: background-color 160ms ease;
 }
+
 .link-contato:hover {
     background-color: var(--hover-bg);
 }
+
 .formulario-contato {
     display: none;
 }
@@ -425,8 +461,10 @@ footer {
    ACESSIBILIDADE
    ============================================================================= */
 
-a:focus, .alternar-tema:focus, .link-contato:focus {
-    outline: 3px solid rgba(99,102,241,0.12);
+a:focus,
+.alternar-tema:focus,
+.link-contato:focus {
+    outline: 3px solid rgba(99, 102, 241, 0.12);
     outline-offset: 3px;
 }
 
@@ -439,21 +477,26 @@ a:focus, .alternar-tema:focus, .link-contato:focus {
         flex-direction: column;
         align-items: flex-start;
     }
+
     .links-navegacao {
         margin-left: 0;
     }
+
     .rodape-interno {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
     }
+
     .rodape-direita {
         text-align: center;
     }
+
     .rodape-contato {
         flex-direction: column;
         text-align: center;
     }
+
     .rodape-contato .right {
         text-align: center;
     }
@@ -463,16 +506,20 @@ a:focus, .alternar-tema:focus, .link-contato:focus {
     .header-inner {
         flex-wrap: nowrap;
     }
+
     .bloco-titulo {
         flex: 1;
     }
+
     /* evitar empurrar o botão para longe da navegação */
     .alternar-tema {
         margin-left: 0;
     }
+
     .grade-listas {
         grid-template-columns: repeat(3, 1fr);
     }
+
     .links-contato {
         justify-content: center;
     }
@@ -482,12 +529,12 @@ a:focus, .alternar-tema:focus, .link-contato:focus {
     main {
         padding: 2rem;
     }
+
     .card {
         padding: 2rem;
     }
+
     .lista-hobbies {
         grid-template-columns: repeat(4, 1fr);
     }
 }
-
-
