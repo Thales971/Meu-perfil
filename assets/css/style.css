@@ -1,338 +1,13 @@
-/* Reset básico */
-/*
-  Este arquivo foi comentado linha a linha para facilitar o estudo.
-  Leia os comentários antes de cada bloco para entender o propósito.
-*/
-* {
-    /* Remove espaçamentos padrão do navegador */
-    margin: 0;
-    padding: 0;
-    /* Faz com que padding e border sejam incluídos na largura/altura */
-    box-sizing: border-box;
-}
+/* =============================================================================
+   RESET E BASE
+   ============================================================================= */
 
-/* ------------------------------------------------------------
-   Índice (visão geral rápida)
-   1) Import de fontes
-   2) Estrutura básica (html, body)
-   3) Variáveis de tema (:root e body.escuro)
-   4) Tipografia
-   5) Header e navegação
-   6) Componentes (avatar, botões, cards)
-   7) Listas, miniaturas e hobbies
-   8) Rodapé e contato
-   9) Responsividade / breakpoints
-   ------------------------------------------------------------ */
-
-/* 1) Import de fontes */
-/* Playfair Display para títulos e Inter para corpo de texto */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
-
-/* 2) Estrutura básica */
-/* Garante que html e body ocupem a altura total */
-html, body {
-    height: 100%;
-}
-
-/* Configura o comportamento do body: flex para empurrar o footer */
-body {
-    display: flex;              /* layout em coluna para header/main/footer */
-    flex-direction: column;
-    min-height: 100vh;         /* assegura que o footer fique no final */
-    font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* fonte do corpo */
-    line-height: 1.6;          /* legibilidade */
-    color: var(--text-color);   /* controlado por variáveis de tema */
-    background-color: var(--bg-color);
-    transition: background-color 0.3s ease, color 0.3s ease; /* transições suaves ao trocar tema */
-}
-
-/* 3) Variáveis de tema */
-/* Defina aqui as cores principais; usar variáveis facilita alternância */
-:root {
-    --bg-color: #ffffff;       /* fundo padrão (claro) */
-    --text-color: #333333;     /* texto principal */
-    --card-bg: #f9f9f9;        /* fundo de cartões/seções */
-    --border-color: #e0e0e0;   /* bordas sutis */
-    --accent-color: #0b5ed7;   /* cor de destaque / links */
-    --hover-bg: #f0f0f0;       /* cor de fundo para hover */
-    --shadow: rgba(0, 0, 0, 0.1); /* sombra base */
-}
-
-/* Sobrescreve variáveis quando o body tem a classe 'escuro' */
-body.escuro {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --card-bg: #1e1e1e;
-    --border-color: #333333;
-    --accent-color: #4dabf7;
-    --hover-bg: #2a2a2a;
-    --shadow: rgba(0, 0, 0, 0.3);
-}
-
-/* 4) Tipografia */
-/* Títulos: fonte serif para contraste visual */
-h1, h2, h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    margin-bottom: 0.5rem; /* separação padrão abaixo do título */
-    letter-spacing: -0.02em;
-}
-
-/* Tamanhos base para títulos (ajuste conforme necessidade) */
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.125rem; }
-
-/* Espaçamento padrão para parágrafos e itens de lista */
-p, li {
-    margin-bottom: 0.5rem;
-}
-
-/* Parágrafo de destaque */
-.lead {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-/* 5) Header e navegação */
-/* Header comum para home/páginas internas */
-.site-header, .page-header {
-    background: linear-gradient(90deg, var(--accent-color) 0%, #6c63ff 60%); /* visual moderno */
-    padding: 0.75rem 1rem;     /* espaçamento interno */
-    position: sticky;          /* fica fixo no topo */
-    top: 0;
-    z-index: 999;              /* sobrepõe outros elementos */
-    backdrop-filter: blur(6px);/* leve desfoque atrás do header */
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 4px var(--shadow);
-    color: white;              /* texto do header em branco */
-}
-
-/* Container interno para limitar largura e distribuir itens */
-.header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-
-/* Bloco com título/nome (nome + cargo) */
-.bloco-titulo { display: flex; flex-direction: column; }
-.bloco-titulo h1 { margin: 0; color: white; }
-.cargo { color: rgba(255,255,255,0.9); }
-
-/* Menu de navegação (links em linha) */
-.links-navegacao { margin-left: auto; display: flex; gap: 0.5rem; }
-.links-navegacao a {
-    color: white;
-    background: rgba(255,255,255,0.06); /* leve contraste sobre o gradiente */
-    padding: 0.4rem 0.75rem;
-    border-radius: 6px;
-}
-.links-navegacao a:focus, .links-navegacao a:hover { background: rgba(255,255,255,0.12); }
-
-/* Botão de alternar tema (posicionamento) */
-.alternar-tema { margin-left: 0.5rem; }
-
-/* 6) Componentes reutilizáveis */
-/* Avatar substituto (iniciais quando não há imagem) */
-.avatar-substituto {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--card-bg);
-    color: var(--accent-color);
-    font-weight: 700;
-    border: 2px solid var(--accent-color);
-}
-
-/* Variante menor do avatar (rodapé) */
-.avatar-compacto {
-    width: 40px;
-    height: 40px;
-    border-width: 2px; /* mantém o anel visível */
-}
-
-/* Nota pequena do rodapé */
-.rodape-nota {
-    font-size: 0.9rem;
-    color: rgba(0,0,0,0.6);
-}
-/* Ajuste para modo escuro */
-body.escuro .rodape-nota { color: rgba(255,255,255,0.72); }
-
-/* Links rápidos no rodapé */
-.rodape-links {
-    margin-top: 6px;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-/* Tamanho do título no header */
-.bloco-titulo h1 { font-size: 1.25rem; color: white; }
-
-/* Cargo / subtítulo */
-.cargo { font-size: 0.9rem; color: var(--text-color); opacity: 0.8; }
-
-/* Estilo visual do botão alternar tema */
-.alternar-tema {
-    background: rgba(255,255,255,0.08);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: transform 120ms ease, background-color 160ms ease;
-}
-.alternar-tema:hover { transform: translateY(-2px); }
-
-/* Foco visível para acessibilidade */
-a:focus, .alternar-tema:focus, .link-contato:focus { outline: 3px solid rgba(99,102,241,0.12); outline-offset: 3px; }
-
-/* Texto que descreve o tema atual (usado com aria-live) */
-.titulo-tema { font-size: 0.9rem; color: var(--text-color); opacity: 0.8; }
-
-/* 7) Layout do conteúdo principal */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
-    /* garante que o main cresça para empurrar o footer ao fim da página */
-    flex: 1 0 auto;
-}
-
-/* Cartões reutilizáveis */
-.card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 1.5rem;
-    margin-bottom: 1.25rem;
-    box-shadow: 0 6px 18px var(--shadow);
-    transition: transform 180ms ease, box-shadow 180ms ease, opacity 200ms ease;
-}
-.card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px var(--shadow); }
-
-/* 8) Rodapé */
-footer {
-    text-align: center;
-    padding: 1rem 1rem;
-    background: var(--card-bg);
-    color: var(--text-color);
-    border-top: 1px solid var(--border-color);
-    margin-top: auto; /* empurra o footer para o fim quando possível */
-    box-shadow: 0 -1px 6px rgba(0,0,0,0.04);
-}
-
-/* Container interno do rodapé */
-.rodape-interno {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0 0.5rem;
-}
-.rodape-esquerda { display:flex; gap:1rem; align-items:center; }
-.rodape-direita { text-align:right; color: var(--text-color); opacity: 0.95; }
-
-@media (max-width:720px) {
-    /* Ajustes móveis: empilha header e centraliza rodapé */
-    .header-inner { flex-direction: column; align-items: flex-start; }
-    .links-navegacao { margin-left: 0; }
-    .rodape-interno { flex-direction: column; gap:0.5rem; text-align:center; }
-    .rodape-direita { text-align:center; }
-}
-
-/* Estilos refinados para os links de navegação */
-.links-navegacao { display: flex; gap: 0.5rem; }
-.links-navegacao a {
-    color: rgba(255,255,255,0.95);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.35rem 0.65rem;
-    border-radius: 6px;
-    transition: background-color 150ms ease, transform 120ms ease;
-    backdrop-filter: blur(4px);
-}
-.links-navegacao a:hover, .links-navegacao a:focus { background-color: rgba(255,255,255,0.08); transform: translateY(-2px); }
-
-/* Marca (logo textual + avatar) */
-.marca { display:flex; align-items:center; gap:0.75rem; }
-.marca .marca-titulo { display:flex; flex-direction:column; }
-.marca .marca-titulo .nome { font-weight:700; color: white; }
-.marca .marca-titulo .subtitulo { font-size:0.85rem; color: rgba(255,255,255,0.9); }
-
-.acoes { display:flex; align-items:center; gap:0.5rem; }
-
-/* Habilidades (badges) */
-.habilidades { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.habilidades li { background-color: var(--hover-bg); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; }
-
-/* Hobbies em cards responsivos */
-.lista-hobbies { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-.card-hobby { background-color: var(--hover-bg); padding: 1rem; border-radius: 8px; text-align: center; transition: transform 0.3s ease; }
-.card-hobby:hover { transform: scale(1.05); }
-.icone-hobby { font-size: 2rem; margin-bottom: 0.5rem; }
-
-/* Miniaturas para listas (thumbs) */
-.miniatura-lista { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; margin-right: 0.75rem; vertical-align: middle; }
-.lista-top ol li { display: flex; align-items: center; gap: 0.6rem; padding: 0.35rem 0; }
-
-/* Caixa rápida de contato (rodapé ou seção) */
-.rodape-contato { display: flex; gap: 1rem; align-items: center; justify-content: space-between; max-width: 1000px; margin: 1.25rem auto 0; padding: 1rem; background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01)); border-radius: 10px; }
-.rodape-contato .left { display:flex; gap:1rem; align-items:center; }
-.rodape-contato .right { text-align:right; color: var(--text-color); opacity: 0.9; }
-
-@media (max-width: 720px) { .rodape-contato { flex-direction: column; text-align: center; } .rodape-contato .right { text-align: center; } }
-
-/* Grade para as listas Top (jogos, filmes, músicas) */
-.grade-listas { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-.lista-top { background-color: var(--hover-bg); padding: 1rem; border-radius: 8px; }
-.lista-top ol { padding-left: 1.5rem; }
-.lista-top li { margin-bottom: 0.5rem; }
-
-/* Links de contato (botões/links para GitHub, e-mail, redes) */
-.links-contato { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
-.link-contato { display: flex; align-items: center; gap: 0.6rem; color: var(--accent-color); text-decoration: none; padding: 0.6rem 0.8rem; border-radius: 8px; transition: background-color 160ms ease; }
-.link-contato:hover { background-color: var(--hover-bg); }
-.formulario-contato { display: none; }
-
-/* Responsividade: ajustes para telas médias e largas */
-@media (min-width: 768px) {
-    .header-inner { flex-wrap: nowrap; }
-    .bloco-titulo { flex: 1; }
-    .alternar-tema { margin-left: auto; }
-    .grade-listas { grid-template-columns: repeat(3, 1fr); }
-    .links-contato { justify-content: center; }
-}
-
-@media (min-width: 1024px) {
-    main { padding: 2rem; }
-    .card { padding: 2rem; }
-    .lista-hobbies { grid-template-columns: repeat(4, 1fr); }
-}
-
-/* Fim do arquivo: comentários e organização destinados a aprendizado */
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-
-/* Fontes: título premium e fonte neutra para o corpo */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap');
 
 html, body {
@@ -350,7 +25,10 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Variáveis CSS para temas */
+/* =============================================================================
+   VARIÁVEIS DE TEMA
+   ============================================================================= */
+
 :root {
     --bg-color: #ffffff;
     --text-color: #333333;
@@ -371,7 +49,10 @@ body.escuro {
     --shadow: rgba(0, 0, 0, 0.3);
 }
 
-/* Tipografia */
+/* =============================================================================
+   TIPOGRAFIA
+   ============================================================================= */
+
 h1, h2, h3 {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
@@ -379,7 +60,6 @@ h1, h2, h3 {
     letter-spacing: -0.02em;
 }
 
-/* Scale tipográfica */
 h1 { font-size: 2rem; }
 h2 { font-size: 1.5rem; }
 h3 { font-size: 1.125rem; }
@@ -393,17 +73,19 @@ p, li {
     font-weight: 500;
 }
 
-/* Layout geral */
+/* =============================================================================
+   HEADER E NAVEGAÇÃO
+   ============================================================================= */
+
+/* Estilo para a header */
 .site-header, .page-header {
-    background: linear-gradient(90deg, var(--accent-color) 0%, #6c63ff 60%);
-    padding: 0.75rem 1rem;
-    position: sticky; /* fixa no topo */
+    background: linear-gradient(90deg, #6c63ff, #4a47a3); /* Gradiente de fundo */
+    padding: 1rem 2rem;
+    position: sticky;
     top: 0;
-    z-index: 999;
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 4px var(--shadow);
-    color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white; /* Garante que o texto seja branco */
 }
 
 .header-inner {
@@ -411,21 +93,126 @@ p, li {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: nowrap;
     justify-content: space-between;
+    flex-wrap: wrap; /* Permite quebra em telas menores */
+    gap: 1rem;
 }
 
-/* Ajustes do cabeçalho */
-.bloco-titulo { display: flex; flex-direction: column; }
-.bloco-titulo h1 { margin: 0; color: white; }
-.cargo { color: rgba(255,255,255,0.9); }
+/* Estilo da marca (nome e subtítulo) */
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
-.links-navegacao { margin-left: auto; display: flex; gap: 0.5rem; }
-.links-navegacao a { color: white; background: rgba(255,255,255,0.06); padding: 0.4rem 0.75rem; border-radius: 6px; }
-.links-navegacao a:focus, .links-navegacao a:hover { background: rgba(255,255,255,0.12); }
+.marca {
+    /* Marca ocupa o espaço disponível para empurrar nav + ações para a direita
+       sem usar margin-left: auto no nav. */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 0; /* evita overflow em telas pequenas */
+}
 
-.alternar-tema { margin-left: 0.5rem; }
+.marca .avatar-substituto {
+    background-color: #fff;
+    color: #6c63ff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.marca-titulo {
+    display: flex;
+    flex-direction: column;
+}
+
+.marca .nome {
+    font-weight: 700;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.marca .subtitulo {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Navegação */
+.links-navegacao {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 0; /* agora a marca ocupa o espaço, não precisamos de auto */
+}
+
+.links-navegacao a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.links-navegacao a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ações (tema claro/escuro) */
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0; /* manter os itens juntos sem espaço extra */
+}
+
+.titulo-tema {
+    color: white;
+    font-size: 1rem;
+}
+
+.alternar-tema {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.alternar-tema:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .links-navegacao {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .acoes {
+        margin-top: 0.5rem;
+    }
+}
+
+/* =============================================================================
+   COMPONENTES REUTILIZÁVEIS
+   ============================================================================= */
 
 .avatar-substituto {
     width: 48px;
@@ -440,14 +227,12 @@ p, li {
     border: 2px solid var(--accent-color);
 }
 
-/* Helpers: variantes usadas no HTML (evitam styles inline) */
 .avatar-compacto {
     width: 40px;
     height: 40px;
-    border-width: 2px; /* mantém o anel visível */
+    border-width: 2px;
 }
 
-/* Nota pequena do rodapé (texto sutil) */
 .rodape-nota {
     font-size: 0.9rem;
     color: rgba(0,0,0,0.6);
@@ -456,7 +241,6 @@ body.escuro .rodape-nota {
     color: rgba(255,255,255,0.72);
 }
 
-/* Links rápidos do rodapé */
 .rodape-links {
     margin-top: 6px;
     display: flex;
@@ -464,43 +248,14 @@ body.escuro .rodape-nota {
     align-items: center;
 }
 
-.bloco-titulo h1 {
-    font-size: 1.25rem;
-    color: white;
-}
-
-.cargo {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.8;
-}
-
-.alternar-tema {
-    background: rgba(255,255,255,0.08);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: transform 120ms ease, background-color 160ms ease;
-}
-
-.alternar-tema:hover { transform: translateY(-2px); }
-
-a:focus, .alternar-tema:focus, .link-contato:focus { outline: 3px solid rgba(99,102,241,0.12); outline-offset: 3px; }
-
-.titulo-tema {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    opacity: 0.8;
-}
+/* =============================================================================
+   LAYOUT PRINCIPAL
+   ============================================================================= */
 
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
-    /* garante que o main cresça para empurrar o footer ao fim da página */
     flex: 1 0 auto;
 }
 
@@ -513,8 +268,14 @@ main {
     box-shadow: 0 6px 18px var(--shadow);
     transition: transform 180ms ease, box-shadow 180ms ease, opacity 200ms ease;
 }
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px var(--shadow);
+}
 
-.card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px var(--shadow); }
+/* =============================================================================
+   RODAPÉ
+   ============================================================================= */
 
 footer {
     text-align: center;
@@ -522,11 +283,10 @@ footer {
     background: var(--card-bg);
     color: var(--text-color);
     border-top: 1px solid var(--border-color);
-    margin-top: auto; /* empurra o footer para o fim quando possível */
+    margin-top: auto;
     box-shadow: 0 -1px 6px rgba(0,0,0,0.04);
 }
 
-/* container interno do rodapé para alinhamento */
 .rodape-interno {
     max-width: 1200px;
     margin: 0 auto;
@@ -536,52 +296,49 @@ footer {
     gap: 1rem;
     padding: 0 0.5rem;
 }
-
-.rodape-esquerda { display:flex; gap:1rem; align-items:center; }
-.rodape-direita { text-align:right; color: var(--text-color); opacity: 0.95; }
-
-@media (max-width:720px) {
-    .header-inner { flex-direction: column; align-items: flex-start; }
-    .links-navegacao { margin-left: 0; }
-    .rodape-interno { flex-direction: column; gap:0.5rem; text-align:center; }
-    .rodape-direita { text-align:center; }
-}
-
-/* Links de navegação (versão refinada) */
-.links-navegacao {
+.rodape-esquerda {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
+    align-items: center;
+}
+.rodape-direita {
+    text-align: right;
+    color: var(--text-color);
+    opacity: 0.95;
 }
 
-.links-navegacao a {
-    color: rgba(255,255,255,0.95);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.35rem 0.65rem;
-    border-radius: 6px;
-    transition: background-color 150ms ease, transform 120ms ease;
-    backdrop-filter: blur(4px);
+.rodape-contato {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 1.25rem auto 0;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+    border-radius: 10px;
 }
-.links-navegacao a:hover, .links-navegacao a:focus {
-    background-color: rgba(255,255,255,0.08);
-    transform: translateY(-2px);
+.rodape-contato .left {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.rodape-contato .right {
+    text-align: right;
+    color: var(--text-color);
+    opacity: 0.9;
 }
 
-.marca { display:flex; align-items:center; gap:0.75rem; }
-.marca .marca-titulo { display:flex; flex-direction:column; }
-.marca .marca-titulo .nome { font-weight:700; color: white; }
-.marca .marca-titulo .subtitulo { font-size:0.85rem; color: rgba(255,255,255,0.9); }
+/* =============================================================================
+   ESTILOS DE PÁGINAS ESPECÍFICAS
+   ============================================================================= */
 
-.acoes { display:flex; align-items:center; gap:0.5rem; }
-
-/* Habilidades */
 .habilidades {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
-
 .habilidades li {
     background-color: var(--hover-bg);
     padding: 0.5rem 1rem;
@@ -589,13 +346,11 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Hobbies */
 .lista-hobbies {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 }
-
 .card-hobby {
     background-color: var(--hover-bg);
     padding: 1rem;
@@ -603,82 +358,121 @@ footer {
     text-align: center;
     transition: transform 0.3s ease;
 }
-
 .card-hobby:hover {
     transform: scale(1.05);
 }
-
-.icone-hobby { font-size: 2rem; margin-bottom: 0.5rem; }
-
-/* Miniaturas para listas */
-.miniatura-lista { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; margin-right: 0.75rem; vertical-align: middle; }
-.lista-top ol li { display: flex; align-items: center; gap: 0.6rem; padding: 0.35rem 0; }
-
-/* Rodapé de contato */
-.rodape-contato { display: flex; gap: 1rem; align-items: center; justify-content: space-between; max-width: 1000px; margin: 1.25rem auto 0; padding: 1rem; background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01)); border-radius: 10px; }
-.rodape-contato .left { display:flex; gap:1rem; align-items:center; }
-.rodape-contato .right { text-align:right; color: var(--text-color); opacity: 0.9; }
-
-@media (max-width: 720px) {
-    .rodape-contato { flex-direction: column; text-align: center; }
-    .rodape-contato .right { text-align: center; }
+.icone-hobby {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Top lists */
+.miniatura-lista {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 0.75rem;
+    vertical-align: middle;
+}
+.lista-top ol li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.35rem 0;
+}
+
 .grade-listas {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
-
 .lista-top {
     background-color: var(--hover-bg);
     padding: 1rem;
     border-radius: 8px;
 }
-
 .lista-top ol {
     padding-left: 1.5rem;
 }
-
 .lista-top li {
     margin-bottom: 0.5rem;
 }
 
-/* Contato */
 .links-contato {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
-
-.link-contato { display: flex; align-items: center; gap: 0.6rem; color: var(--accent-color); text-decoration: none; padding: 0.6rem 0.8rem; border-radius: 8px; transition: background-color 160ms ease; }
-
+.link-contato {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    transition: background-color 160ms ease;
+}
 .link-contato:hover {
     background-color: var(--hover-bg);
 }
+.formulario-contato {
+    display: none;
+}
 
-.formulario-contato { display: none; }
+/* =============================================================================
+   ACESSIBILIDADE
+   ============================================================================= */
 
-/* Responsividade */
+a:focus, .alternar-tema:focus, .link-contato:focus {
+    outline: 3px solid rgba(99,102,241,0.12);
+    outline-offset: 3px;
+}
+
+/* =============================================================================
+   RESPONSIVIDADE
+   ============================================================================= */
+
+@media (max-width: 720px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .links-navegacao {
+        margin-left: 0;
+    }
+    .rodape-interno {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    .rodape-direita {
+        text-align: center;
+    }
+    .rodape-contato {
+        flex-direction: column;
+        text-align: center;
+    }
+    .rodape-contato .right {
+        text-align: center;
+    }
+}
+
 @media (min-width: 768px) {
     .header-inner {
         flex-wrap: nowrap;
     }
-
     .bloco-titulo {
         flex: 1;
     }
-
+    /* evitar empurrar o botão para longe da navegação */
     .alternar-tema {
-        margin-left: auto;
+        margin-left: 0;
     }
-
     .grade-listas {
         grid-template-columns: repeat(3, 1fr);
     }
-
     .links-contato {
         justify-content: center;
     }
@@ -688,11 +482,9 @@ footer {
     main {
         padding: 2rem;
     }
-
     .card {
         padding: 2rem;
     }
-
     .lista-hobbies {
         grid-template-columns: repeat(4, 1fr);
     }

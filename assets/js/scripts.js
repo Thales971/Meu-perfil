@@ -4,6 +4,11 @@ const botao = document.getElementById("botao");
 const titulo = document.getElementById("titulo");
 const body = document.body;
 
+// acessibilidade: garantir atributo aria-pressed inicial
+if (botao && !botao.hasAttribute('aria-pressed')) {
+    botao.setAttribute('aria-pressed', 'false');
+}
+
 // Aplica tema (claro|escuro) e atualiza textos
 function aplicarTema(tema) {
     if (!body) return;
@@ -12,7 +17,12 @@ function aplicarTema(tema) {
     // título textual para leitores de tela e para informar o usuário
     if (titulo) titulo.textContent = tema === 'escuro' ? 'Tema Escuro 🌙' : 'Tema Claro ☀️';
     // botão mostra só o ícone (visual simples); aria-label mantém acessibilidade
-    if (botao) botao.textContent = tema === 'escuro' ? '☀️' : '🌙';
+    if (botao) {
+        botao.textContent = tema === 'escuro' ? '☀️' : '🌙';
+        botao.setAttribute('aria-pressed', tema === 'escuro' ? 'true' : 'false');
+        // atualizar aria-label opcionalmente para dar contexto
+        botao.setAttribute('aria-label', tema === 'escuro' ? 'Mudar para modo claro' : 'Mudar para modo escuro');
+    }
 }
 
 // Inicialização simples: tenta ler preferência, senão define claro
